@@ -1,4 +1,5 @@
 import 'package:app_delivery/app/core/ui/vakinha_ui.dart';
+import 'package:app_delivery/app/routes/auth_routers.dart';
 import 'package:app_delivery/app/routes/splash_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -17,6 +18,7 @@ class VakinhaBurgerMainApp extends StatelessWidget {
       theme: VakinhaUI.theme,
       getPages: [
         ...SplashRouters.routers,
+        ...AuthRouters.routers,
       ],
     );
   }
