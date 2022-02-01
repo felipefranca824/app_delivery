@@ -1,3 +1,4 @@
+import 'package:app_delivery/app/modules/auth/login/login_bindings.dart';
 import 'package:app_delivery/app/modules/auth/login/login_page.dart';
 import 'package:app_delivery/app/modules/auth/register/register_bindings.dart';
 import 'package:app_delivery/app/modules/auth/register/register_page.dart';
@@ -9,6 +10,7 @@ class AuthRouters {
   static final routers = <GetPage>[
     GetPage(
       name: '/auth/login',
+      binding: LoginBindings(),
       page: () => const LoginPage(),
     ),
     GetPage(
