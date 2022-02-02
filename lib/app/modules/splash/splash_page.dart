@@ -1,10 +1,11 @@
 import 'package:app_delivery/app/core/ui/widgets/vakinha_appbar.dart';
 import 'package:app_delivery/app/core/ui/widgets/vakinha_button.dart';
 import 'package:app_delivery/app/core/ui/widgets/vakinha_textformfield.dart';
+import 'package:app_delivery/app/modules/splash/splah_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends GetView<SplahController> {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -36,7 +37,7 @@ class SplashPage extends StatelessWidget {
                   ),
                   VakinhaButton(
                     onPressed: () {
-                      Get.toNamed('/auth/login');
+                      controller.checkLogged();
                     },
                     label: "ACESSAR",
                     width: context.widthTransformer(reducedBy: 40),

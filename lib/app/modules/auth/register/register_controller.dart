@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:app_delivery/app/core/constants/constants.dart';
 import 'package:app_delivery/app/core/mixins/loader_mixin.dart';
 import 'package:app_delivery/app/core/mixins/messages_mixin.dart';
 import 'package:app_delivery/app/core/rest_client/rest_client.dart';
 import 'package:app_delivery/app/models/user_model.dart';
 import 'package:app_delivery/app/repositories/auth/auth_repository.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class RegisterController extends GetxController
     with LoaderMixin, MessagesMixin {
@@ -30,16 +32,9 @@ class RegisterController extends GetxController
       required String password}) async {
     try {
       _loading.toggle();
-      await _authRepository.register(name, email, password);
+      final userLogged = await _authRepository.register(name, email, password);
       _loading.toggle();
-      Get.back();
-      _message(
-        MessageModel(
-          title: 'Sucesso',
-          message: 'Cadastro realizado com sucesso',
-          type: MessageType.info,
-        ),
-      );
+      GetStorage().write(Constants.USER_KEY, userLogged.id);
     } on RestClientException catch (e, s) {
       _loading.toggle();
       log('Erro ao registrar usuario rest', error: e, stackTrace: s);
