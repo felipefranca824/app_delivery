@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:app_delivery/app/core/ui/vakinha_ui.dart';
 import 'package:app_delivery/app/models/product_model.dart';
+import 'package:get/get.dart';
 
 class ProductTile extends StatelessWidget {
   final ProductModel product;
@@ -14,7 +15,9 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/product_detail', arguments: product);
+      },
       child: Container(
         margin: const EdgeInsets.all(10.0),
         height: 80,
