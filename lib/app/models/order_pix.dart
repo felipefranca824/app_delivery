@@ -42,4 +42,8 @@ class OrderPix {
       totalValue: totalValue ?? this.totalValue,
     );
   }
+
+  @override
+  String toString() =>
+      'OrderPix(image: $image, code: $code, totalValue: $totalValue)';
 }
