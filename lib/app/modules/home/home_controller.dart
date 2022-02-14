@@ -1,3 +1,5 @@
+import 'package:app_delivery/app/modules/order/shopping_card/shopping_card_bindings.dart';
+import 'package:app_delivery/app/modules/order/shopping_card/shopping_card_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +24,7 @@ class HomeController extends GetxController {
 
   final _tabs = [
     '/menu',
-    '/order/shpping_card',
+    '/order/shopping_card',
     '/exit',
   ];
 
@@ -44,6 +46,13 @@ class HomeController extends GetxController {
         transition: Transition.fadeIn,
       );
     }
-    if (settings.name == '/order/shopping_card') {}
+    if (settings.name == '/order/shopping_card') {
+      return GetPageRoute(
+        settings: settings,
+        page: () => const ShoppingCardPage(),
+        binding: ShoppingCardBindings(),
+        transition: Transition.fadeIn,
+      );
+    }
   }
 }
