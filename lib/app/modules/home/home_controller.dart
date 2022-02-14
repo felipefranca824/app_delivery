@@ -49,7 +49,7 @@ class HomeController extends GetxController {
     if (settings.name == '/order/shopping_card') {
       return GetPageRoute(
         settings: settings,
-        page: () => const ShoppingCardPage(),
+        page: () => ShoppingCardPage(),
         binding: ShoppingCardBindings(),
         transition: Transition.fadeIn,
       );

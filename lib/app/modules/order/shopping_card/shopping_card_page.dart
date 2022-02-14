@@ -7,7 +7,8 @@ import 'package:validatorless/validatorless.dart';
 import './shopping_card_controller.dart';
 
 class ShoppingCardPage extends GetView<ShoppingCardController> {
-  const ShoppingCardPage({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
+  ShoppingCardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class ShoppingCardPage extends GetView<ShoppingCardController> {
             ),
             child: IntrinsicHeight(
               child: Form(
+                key: formKey,
                 child: Visibility(
                   visible: controller.products.isNotEmpty,
                   replacement: Padding(
@@ -128,7 +130,12 @@ class ShoppingCardPage extends GetView<ShoppingCardController> {
                           child: VakinhaButton(
                             label: 'FINALIZAR',
                             onPressed: () {
-                              Get.toNamed('/orders/finished');
+                              final formValid =
+                                  formKey.currentState?.validate() ?? false;
+
+                              if (formValid) {
+                                controller.createOrder();
+                              }
                             },
                           ),
                         ),
